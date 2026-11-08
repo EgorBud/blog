@@ -1,0 +1,776 @@
+/* =========================================================
+   Стихи и музыка — оформление
+   Цвета и шрифты меняются в блоке :root ниже.
+   ========================================================= */
+
+:root {
+  --bg: #faf7f2;
+  --surface: #fffdf9;
+  --ink: #211f1b;
+  --soft-ink: #35302a;
+  --muted: #6f685e;
+  --line: #e5ded2;
+  --accent: #9c4b2c;
+  --accent-soft: #f3e6de;
+  --radius: 16px;
+  --max: 68rem;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, "Times New Roman", serif;
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(70rem 35rem at 50% -12rem, #fffdf9 0%, rgba(255, 253, 249, 0) 70%),
+    var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.container {
+  width: min(calc(100% - clamp(2.25rem, 7vw, 4.5rem)), var(--max));
+  margin-inline: auto;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--bg);
+  text-decoration: none;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* ---------- Шапка ---------- */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(250, 247, 242, 0.82);
+  -webkit-backdrop-filter: saturate(1.2) blur(12px);
+  backdrop-filter: saturate(1.2) blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 4.25rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+}
+
+.brand__mark {
+  width: 30px;
+  height: 30px;
+  flex: none;
+  border-radius: 9px;
+}
+
+.brand__text {
+  white-space: nowrap;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.9rem, 2.6vw, 1.9rem);
+}
+
+.nav__link {
+  position: relative;
+  padding-block: 0.2rem;
+  color: var(--muted);
+  font-size: 0.94rem;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.nav__link:hover {
+  color: var(--ink);
+}
+
+.nav__link[aria-current="page"] {
+  color: var(--ink);
+}
+
+.nav__link[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.15rem;
+  height: 1px;
+  background: currentColor;
+}
+
+/* ---------- Главный экран ---------- */
+
+.hero {
+  padding-block: clamp(3.5rem, 11vw, 7rem) clamp(3rem, 8vw, 5rem);
+}
+
+.eyebrow {
+  margin-bottom: 1.1rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.hero__title {
+  max-width: 15ch;
+  font-family: var(--serif);
+  font-size: clamp(2.35rem, 7.2vw, 4.75rem);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+}
+
+.hero__lead {
+  max-width: 33rem;
+  margin-top: 1.5rem;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.7vw, 1.12rem);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 2.1rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.35rem;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  border-color: var(--accent);
+  background: var(--accent);
+  transform: translateY(-1px);
+}
+
+.button--ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+.button--ghost:hover {
+  border-color: var(--ink);
+  background: transparent;
+  color: var(--ink);
+}
+
+/* ---------- Секции ---------- */
+
+.section {
+  padding-block: clamp(2.5rem, 6vw, 3.75rem);
+  border-top: 1px solid var(--line);
+}
+
+.section__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.section__title {
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 2.8vw, 1.8rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.section__link {
+  color: var(--muted);
+  font-size: 0.92rem;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.section__link:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+/* ---------- Превью стихотворения ---------- */
+
+.feature {
+  max-width: 40rem;
+  padding-left: clamp(1rem, 3vw, 1.75rem);
+  border-left: 1px solid var(--line);
+}
+
+.feature__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.feature__title {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 3vw, 1.95rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.feature__date,
+.poem__date {
+  color: var(--muted);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.feature__text {
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  font-family: var(--serif);
+  font-size: clamp(1.08rem, 2vw, 1.2rem);
+  line-height: 1.9;
+  color: var(--soft-ink);
+}
+
+.text-link {
+  display: inline-block;
+  margin-top: 1.35rem;
+  padding-bottom: 0.1rem;
+  border-bottom: 1px solid rgba(156, 75, 44, 0.3);
+  color: var(--accent);
+  font-size: 0.94rem;
+  text-decoration: none;
+}
+
+.text-link::after {
+  content: " →";
+}
+
+.text-link:hover {
+  border-color: var(--accent);
+}
+
+/* ---------- Страницы ---------- */
+
+.page {
+  padding-block: clamp(2.75rem, 7vw, 4.5rem);
+}
+
+.page__head {
+  max-width: 44rem;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.page__title {
+  font-family: var(--serif);
+  font-size: clamp(2.3rem, 6vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+}
+
+.page__lead {
+  margin-top: 1.1rem;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.8vw, 1.1rem);
+}
+
+.page__meta {
+  margin-top: 0.75rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.page__meta:empty {
+  display: none;
+}
+
+/* ---------- Стихи ---------- */
+
+.poem {
+  padding-block: clamp(2.25rem, 5vw, 3.4rem);
+  border-top: 1px solid var(--line);
+}
+
+.poem__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  margin-bottom: 1.3rem;
+}
+
+.poem__title {
+  font-family: var(--serif);
+  font-size: clamp(1.55rem, 3.4vw, 2.1rem);
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: -0.012em;
+  scroll-margin-top: 6rem;
+}
+
+.poem__text {
+  max-width: 39rem;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  font-family: var(--serif);
+  font-size: clamp(1.1rem, 2vw, 1.26rem);
+  line-height: 1.95;
+  color: var(--soft-ink);
+}
+
+.poem:target .poem__title {
+  color: var(--accent);
+}
+
+/* ---------- Музыка ---------- */
+
+.track {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 21rem);
+  align-items: center;
+  gap: clamp(1rem, 3.5vw, 2.5rem);
+  padding-block: clamp(1.5rem, 3vw, 2rem);
+  border-top: 1px solid var(--line);
+}
+
+.tracks .track:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.track__meta {
+  min-width: 0;
+}
+
+.track__num {
+  display: block;
+  margin-bottom: 0.15rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.14em;
+}
+
+.track__title {
+  font-family: var(--serif);
+  font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.track__desc {
+  max-width: 34rem;
+  margin-top: 0.25rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.track__player {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  min-width: 0;
+}
+
+.track__audio {
+  display: none;
+}
+
+.track__play {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 3.1rem;
+  height: 3.1rem;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.track__play:hover {
+  border-color: var(--ink);
+  transform: translateY(-1px);
+}
+
+.track__play[aria-pressed="true"] {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.track__play svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+.track__play .icon-pause {
+  display: none;
+}
+
+.track__play[aria-pressed="true"] .icon-play {
+  display: none;
+}
+
+.track__play[aria-pressed="true"] .icon-pause {
+  display: block;
+}
+
+.track__line {
+  flex: 1;
+  min-width: 0;
+}
+
+.track__seek {
+  --progress: 0%;
+  display: block;
+  width: 100%;
+  height: 18px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.track__seek::-webkit-slider-runnable-track {
+  height: 3px;
+  border-radius: 99px;
+  background: linear-gradient(to right, var(--ink) 0 var(--progress), var(--line) var(--progress) 100%);
+}
+
+.track__seek::-moz-range-track {
+  height: 3px;
+  border-radius: 99px;
+  background: var(--line);
+}
+
+.track__seek::-moz-range-progress {
+  height: 3px;
+  border-radius: 99px;
+  background: var(--ink);
+}
+
+.track__seek::-webkit-slider-thumb {
+  width: 12px;
+  height: 12px;
+  margin-top: -4.5px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--ink);
+  box-shadow: 0 0 0 3px var(--bg);
+  -webkit-appearance: none;
+  appearance: none;
+  transition: transform 0.15s ease;
+}
+
+.track__seek::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+.track__seek:hover::-webkit-slider-thumb {
+  transform: scale(1.15);
+}
+
+.track__seek:disabled {
+  cursor: default;
+  opacity: 0.45;
+}
+
+.track__seek:focus-visible {
+  outline-offset: 4px;
+  border-radius: 99px;
+}
+
+.track__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.2rem;
+}
+
+.track__time {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.track__dl {
+  padding-bottom: 0.05rem;
+  border-bottom: 1px solid transparent;
+  color: var(--muted);
+  font-size: 0.78rem;
+  text-decoration: none;
+}
+
+.track__dl:hover {
+  border-color: var(--muted);
+  color: var(--ink);
+}
+
+.track__status {
+  margin-top: 0.35rem;
+  color: var(--accent);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+/* ---------- Пустое состояние ---------- */
+
+.empty {
+  max-width: 42rem;
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 253, 249, 0.6);
+}
+
+.empty__title {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+}
+
+.empty__text {
+  margin-top: 0.4rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ---------- Подвал ---------- */
+
+.footer {
+  margin-top: clamp(2rem, 6vw, 4rem);
+  padding-block: 2.25rem 2.75rem;
+  border-top: 1px solid var(--line);
+}
+
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+/* ---------- 404 ---------- */
+
+.notfound {
+  padding-block: clamp(4rem, 14vw, 8rem);
+  text-align: center;
+}
+
+.notfound__code {
+  font-family: var(--serif);
+  font-size: clamp(4.5rem, 18vw, 9rem);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+
+.notfound__title {
+  margin-top: 1rem;
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 400;
+}
+
+.notfound__text {
+  max-width: 30rem;
+  margin: 0.75rem auto 0;
+  color: var(--muted);
+}
+
+.notfound__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.7rem;
+  margin-top: 2rem;
+}
+
+/* ---------- Адаптив ---------- */
+
+@media (max-width: 820px) {
+  .track {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .brand__text {
+    display: none;
+  }
+
+  .header__inner {
+    min-height: 3.8rem;
+  }
+
+  .nav {
+    gap: 1.1rem;
+  }
+
+  .nav__link {
+    font-size: 0.9rem;
+  }
+
+  .feature {
+    padding-left: 1rem;
+  }
+
+  .footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ---------- Доступность и печать ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@media print {
+  .header,
+  .footer,
+  .hero,
+  .track,
+  .section__link,
+  .text-link,
+  .skip-link,
+  .empty {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  .poem {
+    break-inside: avoid;
+    border-color: #ccc;
+  }
+
+  .poem__text,
+  .poem__date {
+    color: #000;
+  }
+}

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Стихи и музыка</title>
+  <meta name="description" content="Поэзия и музыка: стихи, которые хочется перечитывать, и треки для тихого вечера.">
+  <meta name="theme-color" content="#faf7f2">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="Стихи и музыка">
+  <meta property="og:description" content="Поэзия и музыка: стихи, которые хочется перечитывать, и треки для тихого вечера.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="home">
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="index.html" aria-label="Стихи и музыка — на главную">
+        <img class="brand__mark" src="assets/favicon.svg" alt="" width="30" height="30">
+        <span class="brand__text">Стихи и музыка</span>
+      </a>
+      <nav class="nav" aria-label="Основная навигация">
+        <a class="nav__link" href="index.html" data-nav="home">Главная</a>
+        <a class="nav__link" href="poems.html" data-nav="poems">Стихи</a>
+        <a class="nav__link" href="music.html" data-nav="music">Музыка</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero container">
+      <p class="eyebrow">поэзия и звук</p>
+      <h1 class="hero__title">Стихи, которые хочется слушать</h1>
+      <p class="hero__lead">
+        Здесь живут тексты и музыка. Читайте не спеша, включайте треки
+        и оставайтесь на несколько строк дольше.
+      </p>
+      <div class="hero__actions">
+        <a class="button" href="poems.html">Читать стихи</a>
+        <a class="button button--ghost" href="music.html">Слушать музыку</a>
+      </div>
+    </section>
+
+    <section class="section container" aria-labelledby="latest-title">
+      <div class="section__head">
+        <h2 class="section__title" id="latest-title">Последнее стихотворение</h2>
+        <a class="section__link" href="poems.html">Все стихи →</a>
+      </div>
+      <div id="latest-poem"></div>
+    </section>
+
+    <section class="section container" aria-labelledby="listen-title">
+      <div class="section__head">
+        <h2 class="section__title" id="listen-title">Послушать</h2>
+        <a class="section__link" href="music.html">Вся музыка →</a>
+      </div>
+      <div id="featured-track"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span data-year>2026</span> Стихи и музыка</p>
+      <p class="footer__note">Сделано с любовью к словам и тишине</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>
